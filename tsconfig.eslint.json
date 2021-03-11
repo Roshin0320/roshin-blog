@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "resolveJsonModule": true
+  },
+  "include": ["**/*.ts", "**/*.js", "./.eslintrc.js", "./.stylelintrc.js", "./.cz-config.js"],
+  "exclude": []
+}

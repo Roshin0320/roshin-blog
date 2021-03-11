@@ -1,0 +1,100 @@
+{
+  "name": "analysis",
+  "private": true,
+  "version": "0.0.1",
+  "description": "个人日常学习",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "editFm": "node ./scripts/editFrontmatter.js",
+    "ls-lint": "ls-lint",
+    "lint": "eslint --ext .js,.ts --ignore-path .eslintignore ./ --max-warnings 0",
+    "fix": "run-s fix:*",
+    "fix:css": "stylelint './**/*{.css,.scss,.less}' --fix",
+    "fix:lint": "eslint --ext \"./**/*{.ts,.js}?(x)\" --fix",
+    "fix:json": "prettier --write --parser json \"./**/*.json\"",
+    "fix:md": "prettier --write \"./**/*.md\"",
+    "preinstall": "node ./scripts/checkYarn.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "commit": "cz"
+  },
+  "keywords": [
+    "JavaScript",
+    "TypeScript",
+    "roshin",
+    "blog"
+  ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn ls-lint && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*{.ts,.js}?(x)": [
+      "yarn lint",
+      "yarn fix:lint"
+    ],
+    "./**/*.json": [
+      "yarn fix:json",
+      "git add"
+    ],
+    "./**/*.md": [
+      "yarn fix:md",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@ls-lint/ls-lint": "^1.9.2",
+    "@types/node": "^14.14.31",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "chalk": "^4.1.0",
+    "commitizen": "^4.2.3",
+    "conventional-changelog-cli": "^2.1.1",
+    "cz-customizable": "^6.3.0",
+    "dayjs": "^1.10.4",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-html": "^6.1.2",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.7.0",
+    "fs-extra": "^9.1.0",
+    "gray-matter": "^4.0.2",
+    "husky": "^5.1.3",
+    "inquirer": "^8.0.0",
+    "js-yaml": "^4.0.0",
+    "json2yaml": "^1.1.0",
+    "lint-staged": "^10.5.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "stylelint": "^13.11.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3",
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-baidu-autopush": "^1.0.1",
+    "vuepress-plugin-baidu-tongji": "^1.0.1",
+    "vuepress-plugin-comment": "^0.7.3",
+    "vuepress-plugin-demo-block": "^0.7.2",
+    "vuepress-plugin-one-click-copy": "^1.0.2",
+    "vuepress-plugin-thirdparty-search": "^1.0.2",
+    "vuepress-plugin-zooming": "^1.1.8",
+    "vuepress-theme-vdoing": "^1.8.1"
+  }
+}
