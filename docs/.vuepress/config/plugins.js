@@ -79,7 +79,7 @@ module.exports = [
       options: {
         clientID: '1229a984c761c4c4863d', // GitHub应用程序客户端ID
         clientSecret: 'a74337951df1d42b82233f90f56237a234c94022', // GitHub应用程序客户端秘钥
-        repo: 'roshin.github.io', // GitHub 仓库
+        repo: 'roshin-blog', // GitHub 仓库
         owner: 'Roshin0320', // GitHub仓库所有者，可以是个人用户或组织
         admin: ['Roshin0320'], // GitHub仓库的所有者和协作者(对此存储库具有写访问权的用户)
         id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', // 页面的唯一标识。长度必须小于50
