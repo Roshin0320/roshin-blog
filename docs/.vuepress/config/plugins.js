@@ -84,7 +84,7 @@ module.exports = [
         admin: ['Roshin0320'], // GitHub仓库的所有者和协作者(对此存储库具有写访问权的用户)
         id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', // 页面的唯一标识。长度必须小于50
         title: '「评论」<%- frontmatter.title %>', // GitHub issue 的标题
-        number: -1, // GitHub issue ID 标识，若未定义number属性则会使用 id 进行定位
+        number: -1, // GitHub issue ID 标识，若未定义 number 属性则会使用 id 进行定位
         labels: ['Gitalk', 'Comment'], // GitHub issue 的标签
         body: '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>', // GitHub issue 的内容
         language: 'zh-CN', // 设置语言，支持 [en, zh-CN, zh-TW, es-ES, fr, ru, de, pl, ko], 默认 navigator.language || navigator.userLanguage
@@ -112,7 +112,7 @@ module.exports = [
     {
       transformer(timestamp) {
         const dayjs = require('dayjs');
-        return dayjs(timestamp).format('YYYY/MM/DD, HH:mm:ss');
+        return dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss');
       }
     }
   ]
