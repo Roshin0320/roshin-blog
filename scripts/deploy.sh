@@ -32,20 +32,26 @@ function print_info() {
   echo -e "\e[36mINFO: ${1}\e[m"
 }
 
+# 进入到 build 的目录
+cd "${PUBLISH_DIR}" # ./dist
+
+# 设置 CNAME
+if [ -n "${CNAME}" ]; then 
+  echo "${CNAME}">CNAME
+fi 
+
+# 配置git
+git config --global user.name "roshin"
+git config --global user.email "1425258785@qq.com"
+
+# --------------- GITHUB ---------------------
+
 # 配置仓库地址 环境变量参考 https://docs.github.com/cn/actions/reference/environment-variables
 if [ -n "${EXTERNAL_REPOSITORY}" ]; then
   PUBLISH_REPOSITORY=${EXTERNAL_REPOSITORY}
 else
   PUBLISH_REPOSITORY=${GITHUB_REPOSITORY}
 fi
-
-# 进入到 build 的目录
-cd "${PUBLISH_DIR}" # ./dist
-
-# 设置 GITHUB CNAME
-if [ -n "${GITHUB_CNAME}" ]; then 
-  echo "${GITHUB_CNAME}">CNAME
-fi 
 
 # 配置 ssh
 if [ -n "${GITHUB_TOKEN_DEPLOY}" ]; then
@@ -55,10 +61,6 @@ fi
 
 # 跳过配置 personal_token 和 github_token
 remote_branch="${PUBLISH_BRANCH}"
-
-# 配置git
-git config --global user.name "roshin"
-git config --global user.email "1425258785@qq.com"
 
 git init
 git checkout --orphan "${remote_branch}" # 积累无数次 commit，不算分支
@@ -75,12 +77,7 @@ git push origin -f "${PUBLISH_BRANCH}"
 
 print_info "${GITHUB_SHA} deploy successful：${push_time}"
 
-# # ------------------------------------
-
-# 设置 CODING CNAME
-if [ -n "${CODING_CNAME}" ]; then 
-  echo "${CODING_CNAME}">CNAME
-fi 
+# --------------- CODING ---------------------
 
 # 配置 ssh
 if [ -n "${CODING_TOKEN_DEPLOY}" ]; then
