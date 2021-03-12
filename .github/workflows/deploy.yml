@@ -7,17 +7,16 @@ on:
   push:
     branches:
       - master
-    paths-ignore:   # 下列文件的变更不触发部署，可以自行添加
-      - "!docs/**"
-    #   - README.md
-    #   - LICENSE
+    # paths-ignore:   # 下列文件的变更不触发部署，可以自行添加
+    paths:   # 至少有一个路径与 paths 过滤器中的模式匹配
+      - "docs/**"
+      - "scripts/**"
   pull_request:
     branches:
       - master
-    paths-ignore:   # 下列文件的变更不触发部署，可以自行添加
-      - "!docs/**"
-      # - README.md
-      # - LICENSE
+    paths:
+      - "docs/**"
+      - "scripts/**"
     
   # 允许您从 "Actions" 选项卡手动运行此工作流
   workflow_dispatch:
