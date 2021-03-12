@@ -56,7 +56,7 @@ const readFileList = (_path = '') => {
       return;
     }
     // 过滤 docs 目录级下的文件
-    if (!_path) return;
+    // if (!_path) return;
     // 超过两个 ‘.’的
     if (!/^(\d{2}\.)?[^\\.]+\.md$/.test(filepath)) {
       console.log(chalk.yellow(`warning: 该文件 "${filepath_intact}" 没有按照约定命名，将忽略生成相应数据。`));
@@ -69,7 +69,10 @@ const readFileList = (_path = '') => {
       //   intact_path: filepath_intact,
       //   path: pathJoin(filepath)
       // });
-      arr.push(filepath_intact);
+      arr.push({
+        path: pathJoin(filepath),
+        intact_path: filepath_intact
+      });
     }
   });
   return arr;
