@@ -16,7 +16,7 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }], // favicons，资源放在 public 文件夹
     ['meta', { name: 'keywords', content: keywords.join(',') }], // 属性关键字
-    // ['meta', { name: 'baidu-site-verification', content: 'code-arDPExpzOa' }], // 百度统计的站长验证
+    ['meta', { name: 'baidu-site-verification', content: 'code-ZIXMiJyY4n' }], // 百度统计的站长验证
     ['meta', { name: 'theme-color', content: '#11a8cd' }] // 移动浏览器主题颜色
   ],
   // markdown 扩展

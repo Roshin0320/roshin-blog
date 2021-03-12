@@ -26,6 +26,7 @@ jspm_packages/
 *.tgz
 .next
 dist
+temp
 
 # IDE / Editor
 .idea
