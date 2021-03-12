@@ -1,6 +1,6 @@
 // 插件配置
 module.exports = [
-  // 'vuepress-plugin-baidu-autopush', // 百度自动推送
+  'vuepress-plugin-baidu-autopush', // 百度自动推送
   // 鼠标点击爱心特效
   [
     require('../plugins/love-me'),
