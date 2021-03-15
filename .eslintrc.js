@@ -67,7 +67,7 @@ module.exports = {
     'no-empty': [
       'warn',
       {
-        allowEmptyCatch: true // 允许空catch子句
+        allowEmptyCatch: true // 允许空 catch 子句
       }
     ],
     eqeqeq: 'error', // 强制全等

@@ -1,7 +1,7 @@
 /**
  * 生成百度链接推送文件
  * @example
- *  node ./script/baiduPush.js [domain] => 生成百度链接推送文件，默认 http://extend.roshin.cn，可以多个
+ *  node ./script/baiduPush.js <domain> => 生成百度链接推送文件
  */
 const fse = require('fs-extra'); // fs 扩展工具包
 const chalk = require('chalk'); // node终端样式库

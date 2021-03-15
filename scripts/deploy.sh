@@ -2,6 +2,11 @@
 
 set -e # 确保脚本抛出遇到的错误
 
+# 检查本地是否存在 .env 文件，如果存在，当做环境变量导出
+if [ -f ".env" ];then
+  export $(xargs <.env)
+fi 
+
 # 检查 Actions 目录配置，不存在直接退出
 if [ -z "${PUBLISH_DIR}" ]; then
   echo "【致命错误】：workflows 尚未设置 PUBLISH_DIR"

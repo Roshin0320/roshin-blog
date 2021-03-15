@@ -1,20 +1,21 @@
 const path = require('path');
 const fse = require('fs-extra'); // fs 扩展工具包
 const chalk = require('chalk'); // node终端样式库
+const config = require('../config'); // 项目基本配置
 
 /**
- * docs文件路径
+ * docs 文件路径
  * @param { string } p 需要拼接的路径
  * @returns { string } 完整的路径
  */
-const docsReslove = (p) => path.resolve(__dirname, '../docs', p || '');
+const docsReslove = (p) => path.join(config.docsPath, p || '');
 
 /**
  * temp 文件路径
  * @param { string } p 需要拼接的路径
  * @returns { string } 完整的路径
  */
-const tempReslove = (p) => path.resolve(__dirname, '../temp', p || '');
+const tempReslove = (p) => path.join(config.tempPath, p || '');
 
 /**
  * 类型判断

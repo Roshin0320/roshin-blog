@@ -1,12 +1,25 @@
+const dayjs = require('dayjs'); // 类似于 moment.js 的日期处理插件
+const config = require('../../../config'); // 项目基本配置
+
 // 插件配置
 module.exports = [
   'vuepress-plugin-baidu-autopush', // 百度自动推送
   // 鼠标点击爱心特效
   [
-    require('../plugins/love-me'),
+    require('./love-me'),
     {
       color: '#11a8cd', // 爱心颜色，默认随机色
       excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
+    }
+  ],
+  [
+    'sitemap',
+    {
+      hostname: config.hostname, // 网站根 url
+      outFile: 'sitemap.xml', // 站点地图文件名
+      // urls: [], // 要附加的自定义URL
+      exclude: ['/404.html'], // 排除无实际内容的页面
+      dateFormatter: (time) => dayjs(time).format('YYYY-MM-DD HH:mm:ss')
     }
   ],
   // 可以添加第三方搜索链接的搜索框（原官方搜索框的参数仍可用）
@@ -31,6 +44,10 @@ module.exports = [
         {
           title: '在Bing中搜索',
           frontUrl: 'https://cn.bing.com/search?q='
+        },
+        {
+          title: '通过百度搜索本站的',
+          frontUrl: 'https://www.baidu.com/s?wd=site%3Aroshin.cn%20'
         }
       ]
     }
@@ -77,16 +94,20 @@ module.exports = [
     {
       choosen: 'gitalk',
       options: {
-        clientID: '1229a984c761c4c4863d', // GitHub应用程序客户端ID
-        clientSecret: 'a74337951df1d42b82233f90f56237a234c94022', // GitHub应用程序客户端秘钥
-        repo: 'roshin-blog', // GitHub 仓库
-        owner: 'Roshin0320', // GitHub仓库所有者，可以是个人用户或组织
+        // clientID: '1229a984c761c4c4863d', // GitHub应用程序客户端ID
+        // clientSecret: 'a74337951df1d42b82233f90f56237a234c94022', // GitHub应用程序客户端秘钥
+        // repo: 'roshin-blog', // GitHub 仓库
+        // owner: 'Roshin0320', // GitHub仓库所有者，可以是个人用户或组织
+        clientID: process.env.LLIENT_ID, // GitHub应用程序客户端ID
+        clientSecret: process.env.LLIENT_SECRET, // GitHub应用程序客户端秘钥
+        repo: config.repo, // GitHub 仓库
+        owner: config.username, // GitHub仓库所有者，可以是个人用户或组织
         admin: ['Roshin0320'], // GitHub仓库的所有者和协作者(对此存储库具有写访问权的用户)
-        id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', // 页面的唯一标识。长度必须小于50
-        title: '「评论」<%- frontmatter.title %>', // GitHub issue 的标题
         number: -1, // GitHub issue ID 标识，若未定义 number 属性则会使用 id 进行定位
+        id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', // 页面的唯一标识。长度必须小于50
+        title: '「评论」<%- frontmatter.title.split("|")[0] %>', // GitHub issue 的标题
         labels: ['Gitalk', 'Comment'], // GitHub issue 的标签
-        body: '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>', // GitHub issue 的内容
+        body: '<%- location.href + \n\n + header.meta[description] %>', // GitHub issue 的内容
         language: 'zh-CN', // 设置语言，支持 [en, zh-CN, zh-TW, es-ES, fr, ru, de, pl, ko], 默认 navigator.language || navigator.userLanguage
         perPage: 10, // 每次加载的数据大小，最多 100。
         distractionFreeMode: true, // 类似 Facebook 评论框的全屏遮罩效果.
@@ -110,10 +131,7 @@ module.exports = [
   [
     '@vuepress/last-updated',
     {
-      transformer(timestamp) {
-        const dayjs = require('dayjs');
-        return dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss');
-      }
+      transformer: (timestamp) => dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss')
     }
   ]
 ];

@@ -1,0 +1,44 @@
+# 初始化 gitalk 评论 ##
+
+name: gitalkInit
+
+# 触发 workflow 的条件
+on:
+  # 允许您从 "Actions" 选项卡手动运行此工作流
+  workflow_dispatch:
+
+jobs: # 工作流
+  gitalkInit: # 自定义名称
+    # 指定运行所需要的虚拟机环境
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [10.x]
+        
+    steps: # 步骤
+      # 第一步：下载源码（CI/CD拉取代码到自己的本地）
+      - name: Checkout
+        uses: actions/checkout@master
+        
+      # 第二步：安装 nodejs
+      - name: Install Nodejs
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }} # 版本
+
+      # 第三步：依赖安装   
+      - name: Install Yarn
+        run: |
+          rm -rf ./node_modules
+          npm install -g yarn
+          yarn
+
+      # 第四步：执行 sh 命令文件
+      - name: 'Run gitalkInit'
+        run: |
+          yarn build
+        env: # 设置环境变量
+          GITALK_INIT_TOKEN: ${{secrets.GITALK_INIT_TOKEN}} # 初始化 gitalk 评论的私密 token
+          LLIENT_ID: ${{secrets.LLIENT_ID}} # GitHub应用程序客户端ID
+          LLIENT_SECRET: ${{secrets.LLIENT_SECRET}} # GitHub应用程序客户端秘钥
