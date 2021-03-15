@@ -96,12 +96,8 @@ module.exports = [
     {
       choosen: 'gitalk',
       options: {
-        // clientID: 'xxx', // GitHub应用程序客户端ID
-        // clientSecret: 'xxx', // GitHub应用程序客户端秘钥
-        // repo: 'roshin-blog', // GitHub 仓库
-        // owner: 'Roshin0320', // GitHub仓库所有者，可以是个人用户或组织
-        clientID: process.env.CLIENT_ID, // GitHub应用程序客户端ID
-        clientSecret: process.env.CLIENT_SECRET, // GitHub应用程序客户端秘钥
+        clientID: '1229a984c761c4c4863d', // GitHub应用程序客户端ID
+        clientSecret: 'a74337951df1d42b82233f90f56237a234c94022', // GitHub应用程序客户端秘钥
         repo: config.repo, // GitHub 仓库
         owner: config.username, // GitHub仓库所有者，可以是个人用户或组织
         admin: [config.username], // GitHub仓库的所有者和协作者(对此存储库具有写访问权的用户)

@@ -40,5 +40,3 @@ jobs: # 工作流
           yarn build
         env: # 设置环境变量
           GITALK_INIT_TOKEN: ${{secrets.GITALK_INIT_TOKEN}} # 初始化 gitalk 评论的私密 token
-          LLIENT_ID: ${{secrets.LLIENT_ID}} # GitHub应用程序客户端ID
-          LLIENT_SECRET: ${{secrets.LLIENT_SECRET}} # GitHub应用程序客户端秘钥
