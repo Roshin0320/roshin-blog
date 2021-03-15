@@ -108,7 +108,7 @@ module.exports = [
         body: '页面: <%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>', // GitHub issue 的内容
         language: 'zh-CN', // 设置语言，支持 [en, zh-CN, zh-TW, es-ES, fr, ru, de, pl, ko], 默认 navigator.language || navigator.userLanguage
         perPage: 10, // 每次加载的数据大小，最多 100。
-        distractionFreeMode: true, // 类似 Facebook 评论框的全屏遮罩效果.
+        distractionFreeMode: false, // 类似 Facebook 评论框的全屏遮罩效果.
         pagerDirection: 'last', // 评论排序方式，按创建时间 'first' 正序 | 'last' 倒序
         // 如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。
         // 如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。
