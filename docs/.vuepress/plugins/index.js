@@ -103,7 +103,7 @@ module.exports = [
         repo: config.repo, // GitHub 仓库
         owner: config.username, // GitHub仓库所有者，可以是个人用户或组织
         admin: ['Roshin0320'], // GitHub仓库的所有者和协作者(对此存储库具有写访问权的用户)
-        number: -1, // GitHub issue ID 标识，若未定义 number 属性则会使用 id 进行定位
+        // number: -1, // GitHub issue ID 标识，若未定义 number 属性则会使用 id 进行定位
         id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', // 页面的唯一标识。长度必须小于50
         title: '「评论」<%- frontmatter.title.split("|")[0] %>', // GitHub issue 的标题
         labels: ['Gitalk', 'Comment'], // GitHub issue 的标签
@@ -115,14 +115,14 @@ module.exports = [
         // 如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。
         // 如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。
         createIssueManually: false,
-        proxy: false, // GitHub oauth 请求到反向代理，为了支持 CORS
+        // proxy: false, // GitHub oauth 请求到反向代理，为了支持 CORS
         // 评论列表的动画，参考 https://github.com/joshwcomeau/react-flip-move/blob/master/documentation/enter_leave_animations.md
-        flipMoveOptions: {
-          staggerDelayBy: 150,
-          appearAnimation: 'accordionVertical',
-          enterAnimation: 'accordionVertical',
-          leaveAnimation: 'accordionVertical'
-        },
+        // flipMoveOptions: {
+        //   staggerDelayBy: 150,
+        //   appearAnimation: 'accordionVertical',
+        //   enterAnimation: 'accordionVertical',
+        //   leaveAnimation: 'accordionVertical'
+        // },
         enableHotKey: true // 启用快捷键(cmd|ctrl + enter) 提交评论
       }
     }
