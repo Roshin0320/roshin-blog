@@ -1,6 +1,5 @@
-const plugins = require('./plugins');
-const themeConfig = require('./config');
-
+const plugins = require('./config/plugins');
+const themeConfig = require('./config/themeConfig');
 const keywords = ['Roshin', '技术文档', '学习笔记', '收藏', 'JavaScript', 'js', 'TypeScript', 'ts'];
 
 module.exports = {

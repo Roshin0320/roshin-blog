@@ -152,7 +152,7 @@ function getBirthtime(stat) {
 
 // 定义永久链接数据
 function getPermalink() {
-  return `${PREFIX + (Math.random() + Math.random()).toString(16).slice(2, 8)}/`;
+  return `${PREFIX + (Math.random() + Math.random()).toString(16).slice(2, 18)}/`;
 }
 
 module.exports = setFrontmatter;

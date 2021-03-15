@@ -12,7 +12,7 @@ const fse = require('fs-extra'); // fs 扩展工具包
 // const yaml = require('js-yaml'); // YAML 解析器
 const xmlParser = require('xml-parser'); // XML解析器
 const cheerio = require('cheerio'); // 服务器端操控 HTML 的工具库，jQuery语法
-const crypto = require('crypto'); // 通用的加密和哈希算法
+// const crypto = require('crypto'); // 通用的加密和哈希算法
 
 // issues 路径
 const issuesUrl = `https://api.github.com/repos/${config.username}/${config.repo}/issues?access_token=${process.env.GITALK_INIT_TOKEN}`;
@@ -66,7 +66,9 @@ async function main() {
 
     // 筛选出要忽略的页面
     for (let i = 0; i < notInitIssueLinks.length; i++) {
-      if (ignore.includes(normalizeUrl(notInitIssueLinks[i]))) {
+      // 规范化 url
+      const normalizeUrl = url.parse(notInitIssueLinks[i]).path;
+      if (ignore.includes(normalizeUrl)) {
         notInitIssueLinks.splice(i, 1);
         i--;
       }
@@ -84,13 +86,13 @@ async function main() {
         const initRet = await notInitIssueLinks.map(async (item) => {
           const html = await send.get({ url: item });
           const title = cheerio.load(html)('title').text();
-          const desc = cheerio.load(html)("meta[name='description']").attr('content');
+          // const desc = cheerio.load(html)("meta[name='description']").attr('content');
           const pathLabel = url.parse(item).path;
-          const label = crypto.createHash('md5').update(pathLabel, 'utf-8').digest('hex');
+          // const label = crypto.createHash('md5').update(pathLabel, 'utf-8').digest('hex');
           const form = JSON.stringify({
             title: `「评论」${title.split('|')[0]}`,
-            body: item + '\n\n' + desc,
-            labels: ['Gitalk', 'Comment', label]
+            body: `页面: ${item}`,
+            labels: ['Gitalk', 'Comment', pathLabel]
           });
           const res = await send.post({ form });
           return res;
@@ -119,16 +121,6 @@ function sitemapXmlReader() {
     })[0];
     return loc.content;
   });
-}
-
-/**
- * 规范化 url
- * @param {string} url 连接地址
- * @return {string} 去除协议头后的连接
- */
-function normalizeUrl(url) {
-  const reg = new RegExp(`^${config.hostname}`, 'g');
-  return url.replace(reg, '');
 }
 
 /**
