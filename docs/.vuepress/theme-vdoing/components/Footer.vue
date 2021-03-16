@@ -30,9 +30,9 @@ export default {
       return this.$themeConfig.footer;
     },
     YearText() {
-      const nowYear = new Date().getFullYear()
-      if (Number(this.footer.createYear) === nowYear) return this.footer.createYear
-      return `${this.footer.createYear}-${nowYear}`
+      // const nowYear = new Date().getFullYear();
+      // if (Number(this.footer.createYear) === nowYear) return this.footer.createYear;
+      return `${this.footer.createYear}-present`;
     }
   }
 };
