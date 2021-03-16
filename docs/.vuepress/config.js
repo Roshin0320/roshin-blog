@@ -1,10 +1,12 @@
 const plugins = require('./config/plugins');
 const themeConfig = require('./config/themeConfig');
-const keywords = ['Roshin', '技术文档', '学习笔记', '收藏', 'JavaScript', 'js', 'TypeScript', 'ts'];
+const config = require('../../config'); // 项目基本配置
+
+const keywords = ['Roshin', '个人博客', '技术文档', '学习笔记', '收藏', 'JavaScript', 'js', 'TypeScript', 'ts'];
 
 module.exports = {
   title: "Roshin's blog", // 网站的标题
-  description: 'Roshin 的技术博客,专注web前端学习与总结。', // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中
+  description: config.desc, // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中
   base: '/', // 部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。
   dest: 'dist', // 指定 build 的输出目录
   host: '0.0.0.0', // 主机名

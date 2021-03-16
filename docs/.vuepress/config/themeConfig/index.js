@@ -1,5 +1,6 @@
 const nav = require('./nav.js');
 const htmlModules = require('./htmlModules');
+const config = require('../../../../config'); // 项目基本配置
 
 // 主题配置
 module.exports = {
@@ -45,7 +46,7 @@ module.exports = {
   blogger: {
     avatar: 'https://cdn.jsdelivr.net/gh/Roshin0320/images/blog/avatar.jpg',
     name: 'Roshin',
-    slogan: '如果你只做自己能力范围之内的事情，就永远没法进步。'
+    slogan: config.desc
   },
   // 社交图标，显示于博主信息栏和页脚栏
   social: {
