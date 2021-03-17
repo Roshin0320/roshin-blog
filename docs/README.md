@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.png
 heroText: Roshin's blog
-tagline: Web前端技术博客，积跬步以至千里，致敬每个爱学习的你。
+tagline: 如果你只做自己能力范围之内的事情，就永远没法进步。
 bannerBg: auto
 # 可选的
 # features:

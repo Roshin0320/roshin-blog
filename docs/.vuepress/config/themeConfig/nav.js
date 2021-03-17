@@ -16,17 +16,14 @@ module.exports = [
     items: [{ text: '《数据结构与算法》笔记', link: '/note/structure/' }]
   },
   {
-    text: '技术文档',
-    link: '/technology/'
-    // items: [
-    //   { text: '《JavaScript教程》笔记', link: '/note/javascript/' },
-    //   { text: '《ES6 教程》笔记', link: '/note/es6/' }
-    // ]
+    text: '文档教程',
+    link: '/docs/',
+    items: [{ text: '技术文档', link: '/pages/fc6c359ec7a8c/' }]
   },
   {
-    text: '面试',
+    text: '面试集锦',
     link: '/audition/',
-    items: [{ text: 'JavaScript', link: '/audition/javascript/' }]
+    items: [{ text: 'JavaScript', link: '/pages/22250d7a02f68/' }]
   },
   {
     text: '索引',
