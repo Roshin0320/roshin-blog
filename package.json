@@ -84,6 +84,7 @@
     "json2yaml": "^1.1.0",
     "lint-staged": "^10.5.4",
     "minimist": "^1.2.5",
+    "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "stylelint": "^13.11.0",

@@ -5,7 +5,7 @@ const config = require('../../../config'); // 项目基本配置
 
 // 插件配置
 module.exports = [
-  // 'vuepress-plugin-element-tabs', // 选项卡插件
+  'vuepress-plugin-element-tabs', // 选项卡插件
   'vuepress-plugin-baidu-autopush', // 百度自动推送
   // 鼠标点击爱心特效
   [

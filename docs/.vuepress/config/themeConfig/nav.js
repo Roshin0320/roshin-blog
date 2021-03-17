@@ -12,45 +12,29 @@ module.exports = [
   // { text: '归档', link: '/archives/' },
   {
     text: '学习笔记',
-    link: '/notes',
-    items: [
-      { text: '《JavaScript 教程》笔记', link: '/note/javascript/' },
-      { text: '《ES6 教程》笔记', link: '/note/es6/' }
-    ]
+    link: '/notes/',
+    items: [{ text: '《数据结构与算法》笔记', link: '/note/structure/' }]
   },
   {
     text: '技术文档',
-    link: '/technology',
-    items: [
-      { text: '《JavaScript教程》笔记', link: '/note/javascript/' },
-      { text: '《ES6 教程》笔记', link: '/note/es6/' }
-    ]
+    link: '/technology/'
+    // items: [
+    //   { text: '《JavaScript教程》笔记', link: '/note/javascript/' },
+    //   { text: '《ES6 教程》笔记', link: '/note/es6/' }
+    // ]
   },
   {
-    text: '实用技巧',
-    link: '/other',
-    items: [
-      { text: '《JavaScript教程》笔记', link: '/note/javascript/' },
-      { text: '《ES6 教程》笔记', link: '/note/es6/' }
-    ]
+    text: '面试',
+    link: '/audition/',
+    items: [{ text: 'JavaScript', link: '/audition/javascript/' }]
   },
   {
-    text: '更多',
-    link: '/more/',
+    text: '索引',
+    link: '/archives/',
     items: [
       { text: '分类', link: '/categories/' },
       { text: '标签', link: '/tags/' },
-      { text: '归档', link: '/archives/' },
-      {
-        text: '',
-        items: [
-          { text: '面试', link: '/pages/602107615ad25/' },
-          { text: '心情杂货', link: '/pages/3bbfa3740eb55/' },
-          { text: '网站收藏', link: '/pages/b53ad9826d6c8/' },
-          { text: '资源收藏', link: '/pages/da33a7a7bcadb/' },
-          { text: '在线工具', link: '/pages/4806cc5c8acbd/' }
-        ]
-      }
+      { text: '归档', link: '/archives/' }
     ]
   },
   {
