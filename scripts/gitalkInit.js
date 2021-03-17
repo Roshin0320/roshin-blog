@@ -18,7 +18,9 @@ const cheerio = require('cheerio'); // 服务器端操控 HTML 的工具库，jQ
 const issuesUrl = `https://api.github.com/repos/${config.username}/${config.repo}/issues?access_token=${process.env.GITALK_INIT_TOKEN}`;
 
 // 忽略的页面
-const ignore = ['/', '/tags/', '/archives/', '/categories/', '/about/'];
+const ignore = ['/', '/tags/', '/archives/', '/categories/', '/audition/', '/docs/', '/notes/'];
+// 包含的页面，null 表示所有页面
+const includes = ['/about/', '/blog/', '/friends/', /\/pages\/[a-zA-Z\d]+\//];
 
 // 发送请求
 const send = {
@@ -64,13 +66,23 @@ async function main() {
     // 筛选出没有初始化 issues 的连接
     const notInitIssueLinks = urls.filter((link) => !issues.some((item) => item.body.includes(link)));
 
-    // 筛选出要忽略的页面
-    for (let i = 0; i < notInitIssueLinks.length; i++) {
-      // 规范化 url
-      const normalizeUrl = url.parse(notInitIssueLinks[i]).path;
-      if (ignore.includes(normalizeUrl)) {
-        notInitIssueLinks.splice(i, 1);
-        i--;
+    // 筛选出要包含的页面
+    if (includes) {
+      for (let i = 0; i < notInitIssueLinks.length; i++) {
+        // 规范化 url
+        const normalizeUrl = url.parse(notInitIssueLinks[i]).path;
+        const isInclude = includes.some((v) => {
+          if (typeof v === 'string') return v === normalizeUrl;
+          return v.test(normalizeUrl);
+        });
+        if (!isInclude) {
+          notInitIssueLinks.splice(i, 1);
+          i--;
+        }
+        // if (ignore.includes(normalizeUrl)) {
+        //   notInitIssueLinks.splice(i, 1);
+        //   i--;
+        // }
       }
     }
 
