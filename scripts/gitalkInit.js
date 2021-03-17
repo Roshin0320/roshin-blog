@@ -18,7 +18,7 @@ const cheerio = require('cheerio'); // 服务器端操控 HTML 的工具库，jQ
 const issuesUrl = `https://api.github.com/repos/${config.username}/${config.repo}/issues?access_token=${process.env.GITALK_INIT_TOKEN}`;
 
 // 忽略的页面
-const ignore = ['/', '/tags/', '/archives/', '/categories/', '/audition/', '/docs/', '/notes/'];
+// const ignore = ['/', '/tags/', '/archives/', '/categories/', '/audition/', '/docs/', '/notes/'];
 // 包含的页面，null 表示所有页面
 const includes = ['/about/', '/blog/', '/friends/', /\/pages\/[a-zA-Z\d]+\//];
 
