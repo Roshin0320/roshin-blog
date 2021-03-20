@@ -121,7 +121,7 @@
     "*.scss": "scss",
     "*.pss": "postcss",
     "*.js": "javascript"
-  },
+  }
   // "js/ts.implicitProjectConfig.experimentalDecorators": true,
   // "js/ts.implicitProjectConfig.checkJs": true,
   // "typescript.suggest.completeFunctionCalls": true

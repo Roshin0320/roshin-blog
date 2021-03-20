@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const path = require('path');
 const dayjs = require('dayjs'); // 类似于 moment.js 的日期处理插件
 const config = require('../../../config'); // 项目基本配置
 
@@ -15,6 +16,7 @@ module.exports = [
       excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
     }
   ],
+  // 生成站点地图
   [
     'sitemap',
     {
@@ -131,6 +133,18 @@ module.exports = [
     '@vuepress/last-updated',
     {
       transformer: (timestamp) => dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss')
+    }
+  ],
+  [
+    'copyright',
+    {
+      disabled: false, // 是否默认禁用这个插件的功能
+      noCopy: false, // 是否禁止复制
+      noSelect: false, // 是否禁止选中
+      minLength: 0, // 触发剪贴板组件或 noCopy 效果的最小文本长度
+      authorName: 'Roshin', // 作者名称。可以提供一个字符串或 i18n 对象
+      // 自定义剪贴板组件的路径。如果提供了相对路径，将基于 sourceDir 进行解析。
+      clipboardComponent: path.resolve(__dirname, '../components/Clipboard')
     }
   ]
 ];

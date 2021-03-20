@@ -33,7 +33,7 @@
 
 ## 介绍
 
-本站主题是[`Vdoing`](https://github.com/xugaoyi/vuepress-theme-vdoing)这是一款简洁高效的 [`Vdoing`](https://github.com/xugaoyi/vuepress-theme-vdoing) 知识管理&博客主题。我在GitHub上无意间探索并喜欢上了这款主题，感谢大佬的开源分享！更多[详情](https://github.com/xugaoyi/vuepress-theme-vdoing)。
+本站主题是[`Vdoing`](https://github.com/xugaoyi/vuepress-theme-vdoing)这是一款简洁高效的 [`Vdoing`](https://github.com/xugaoyi/vuepress-theme-vdoing) 知识管理&博客主题。我在 GitHub 上无意间探索并喜欢上了这款主题，感谢大佬的开源分享！更多[详情](https://github.com/xugaoyi/vuepress-theme-vdoing)。
 
 ## 站点
 

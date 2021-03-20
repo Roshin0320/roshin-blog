@@ -1,8 +1,10 @@
+// const path = require('path');
 const plugins = require('./config/plugins');
 const themeConfig = require('./config/themeConfig');
 const config = require('../../config'); // 项目基本配置
 
 const keywords = ['Roshin', '个人博客', '技术文档', '学习笔记', '收藏', 'JavaScript', 'js', 'TypeScript', 'ts'];
+// const resolve = (dir = '') => path.resolve(__dirname, dir); // 解析绝对路径
 
 module.exports = {
   title: "Roshin's blog", // 网站的标题
@@ -31,4 +33,10 @@ module.exports = {
   },
   themeConfig, // 主题配置
   plugins // 插件
+  // 通过链式操作改变 webpack 配置
+  // chainWebpack: (config) => {
+  //   // 设置别名
+  //   console.log(resolve('../../src/'), 123123);
+  //   config.resolve.alias.set('@src', resolve('../../src/')).set('@vuepress', resolve('./'));
+  // }
 };

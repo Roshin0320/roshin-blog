@@ -1101,11 +1101,6 @@
     event-target-shim "^5.0.1"
     miniprogram-api-typings "^2.10.2"
 
-"@ls-lint/ls-lint@^1.9.2":
-  version "1.9.2"
-  resolved "https://registry.npmjs.org/@ls-lint/ls-lint/-/ls-lint-1.9.2.tgz#689f1f4c06072823a726802ba167340efcefe19c"
-  integrity sha512-sugEjWjSSy9OHF6t1ZBLZCAROj52cZthB9dIePmzZzzMwmWwy3qAEMSdJheHeS1FOwDZI7Ipm1H/bWgzJNnSAw==
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npmjs.org/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -1139,6 +1134,15 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
+
+"@shigma/stringify-object@^3.3.0":
+  version "3.3.0"
+  resolved "https://r.cnpmjs.org/@shigma/stringify-object/download/@shigma/stringify-object-3.3.0.tgz#c6611dcdf650024a9f6397580f821accd3021be3"
+  integrity sha1-xmEdzfZQAkqfY5dYD4IazNMCG+M=
+  dependencies:
+    get-own-enumerable-property-symbols "^3.0.0"
+    is-obj "^1.0.1"
+    is-regexp "^2.0.0"
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -6267,8 +6271,8 @@ humanize-ms@^1.2.1:
 
 husky@^5.1.3:
   version "5.1.3"
-  resolved "https://registry.npmjs.org/husky/-/husky-5.1.3.tgz#1a0645a4fe3ffc006c4d0d8bd0bcb4c98787cc9d"
-  integrity sha512-fbNJ+Gz5wx2LIBtMweJNY1D7Uc8p1XERi5KNRMccwfQA+rXlxWNSdUxswo0gT8XqxywTIw7Ywm/F4v/O35RdMg==
+  resolved "https://r.cnpmjs.org/husky/download/husky-5.1.3.tgz#1a0645a4fe3ffc006c4d0d8bd0bcb4c98787cc9d"
+  integrity sha1-GgZFpP4//ABsTQ2L0Ly0yYeHzJ0=
 
 i@^0.3.6:
   version "0.3.6"
@@ -12840,6 +12844,13 @@ vuepress-plugin-container@^2.0.2:
   dependencies:
     "@vuepress/shared-utils" "^1.2.0"
     markdown-it-container "^2.0.0"
+
+vuepress-plugin-copyright@^1.0.2:
+  version "1.0.2"
+  resolved "https://r.cnpmjs.org/vuepress-plugin-copyright/download/vuepress-plugin-copyright-1.0.2.tgz#d5cc73af82028e073d4cd82e3ef99012ad8f79cc"
+  integrity sha1-1cxzr4ICjgc9TNguPvmQEq2Pecw=
+  dependencies:
+    "@shigma/stringify-object" "^3.3.0"
 
 vuepress-plugin-demo-block@^0.7.2:
   version "0.7.2"

@@ -27,9 +27,10 @@
     // "noFallthroughCasesInSwitch": true, // 报告switch语句的fallthrough错误。（即，不允许switch的case语句贯穿）
     // 模块名到基于 baseUrl 的路径映射的列表(就是别名)
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@examples/*": ["examples/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "examples"],
   "exclude": ["node_modules/**"]
 }
