@@ -97,7 +97,7 @@ async function main() {
       setTimeout(async () => {
         const initRet = await notInitIssueLinks.map(async (item) => {
           const html = await send.get({ url: item });
-          const title = cheerio.load(html)('title').text();
+          const title = cheerio.load(html)('title').text() || '';
           // const desc = cheerio.load(html)("meta[name='description']").attr('content');
           const pathLabel = url.parse(item).path;
           // const label = crypto.createHash('md5').update(pathLabel, 'utf-8').digest('hex');
