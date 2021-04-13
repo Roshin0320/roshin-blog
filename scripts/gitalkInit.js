@@ -91,7 +91,7 @@ async function main() {
       console.log(notInitIssueLinks);
       console.log('开始提交初始化请求, 大约需要40秒...');
 
-      notInitIssueLinks.map(async (item) => start(item));
+      notInitIssueLinks.map((item) => start(item));
     } else {
       console.log('本次发布无新增页面，无需初始化issue!!');
     }
@@ -138,6 +138,7 @@ function sendRequest(options) {
  */
 function start(_notInitIssueLink) {
   setTimeout(async () => {
+    console.log('重新检索');
     const html = await send.get({ url: _notInitIssueLink });
     const title = cheerio.load(html)('title').text() || '';
     if (!title || title === config.title) return start(_notInitIssueLink); // 如果没有拿到 title, 认为没有生成页面，继续等待

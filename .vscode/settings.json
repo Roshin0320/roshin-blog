@@ -2,7 +2,7 @@
 {
   "search.followSymlinks": false, // 关闭rg.exe进程(是否在搜索中跟踪符号链接)
   "typescript.updateImportsOnFileMove.enabled": "never",
-  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.ignoreTrimWhitespace": true,
 
   /* ------ 主题美化 ------ */
   "editor.fontFamily": "'Source Code Pro', 'Menlo', Consolas, Monaco, 'Courier New'", // 控制字体系列。

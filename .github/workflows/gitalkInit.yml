@@ -4,6 +4,21 @@ name: gitalkInit
 
 # 触发 workflow 的条件
 on:
+  # push 事件或 pull_request 事件都可以触发 workflow, 仅限 master 分支
+  push:
+    branches:
+      - master
+    # paths-ignore:   # 下列文件的变更不触发部署，可以自行添加
+    paths:   # 至少有一个路径与 paths 过滤器中的模式匹配
+      - "docs/**"
+      - "scripts/**"
+  pull_request:
+    branches:
+      - master
+    paths:
+      - "docs/**"
+      - "scripts/**"
+
   # 允许您从 "Actions" 选项卡手动运行此工作流
   workflow_dispatch:
 
@@ -11,23 +26,23 @@ jobs: # 工作流
   gitalkInit: # 自定义名称
     # 指定运行所需要的虚拟机环境
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node-version: [10.x]
-        
+
     steps: # 步骤
       # 第一步：下载源码（CI/CD拉取代码到自己的本地）
       - name: Checkout
         uses: actions/checkout@master
-        
+
       # 第二步：安装 nodejs
       - name: Install Nodejs
         uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node-version }} # 版本
 
-      # 第三步：依赖安装   
+      # 第三步：依赖安装
       - name: Install Yarn
         run: |
           rm -rf ./node_modules
