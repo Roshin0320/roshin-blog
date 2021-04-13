@@ -11,6 +11,7 @@
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
     "baiduPush": "node ./scripts/baiduPush.js https://roshin.cn && node ./scripts/baiduPush.js https://www.roshin.cn",
+    "gitalkInit": "node ./scripts/gitalkInit.js",
     "ls-lint": "ls-lint",
     "lint": "eslint --ext .js,.ts --ignore-path .eslintignore ./ --max-warnings 0",
     "fix": "run-s fix:*",

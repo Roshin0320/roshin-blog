@@ -53,5 +53,6 @@ jobs: # 工作流
       - name: 'Run gitalkInit'
         run: |
           yarn build
+          yarn gitalkInit
         env: # 设置环境变量
           GITALK_INIT_TOKEN: ${{secrets.GITALK_INIT_TOKEN}} # 初始化 gitalk 评论的私密 token
