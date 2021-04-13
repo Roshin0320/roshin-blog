@@ -10,7 +10,6 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "postbuild": "node ./scripts/gitalkInit.js",
     "baiduPush": "node ./scripts/baiduPush.js https://roshin.cn && node ./scripts/baiduPush.js https://www.roshin.cn",
     "ls-lint": "ls-lint",
     "lint": "eslint --ext .js,.ts --ignore-path .eslintignore ./ --max-warnings 0",
