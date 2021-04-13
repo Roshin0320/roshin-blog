@@ -7,7 +7,7 @@ const keywords = ['Roshin', '个人博客', '技术文档', '学习笔记', '收
 // const resolve = (dir = '') => path.resolve(__dirname, dir); // 解析绝对路径
 
 module.exports = {
-  title: "Roshin's blog", // 网站的标题
+  title: config.title, // 网站的标题
   description: config.desc, // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中
   base: '/', // 部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。
   dest: 'dist', // 指定 build 的输出目录

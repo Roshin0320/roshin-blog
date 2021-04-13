@@ -90,28 +90,8 @@ async function main() {
       console.log(`本次有${notInitIssueLinks.length}个链接需要初始化issue：`);
       console.log(notInitIssueLinks);
       console.log('开始提交初始化请求, 大约需要40秒...');
-      /**
-       * 部署好网站后，直接执行 start，新增文章并不会生成评论
-       * 经测试，最少需要等待 40 秒，才可以正确生成，怀疑跟 github 的 api 有关系，没有找到实锤
-       */
-      setTimeout(async () => {
-        const initRet = await notInitIssueLinks.map(async (item) => {
-          const html = await send.get({ url: item });
-          const title = cheerio.load(html)('title').text() || '';
-          // const desc = cheerio.load(html)("meta[name='description']").attr('content');
-          const pathLabel = url.parse(item).path;
-          // const label = crypto.createHash('md5').update(pathLabel, 'utf-8').digest('hex');
-          const form = JSON.stringify({
-            title: `「评论」${title.split('|')[0]}`,
-            body: `页面: ${item}`,
-            labels: ['Gitalk', 'Comment', pathLabel]
-          });
-          const res = await send.post({ form });
-          return res;
-        });
-        console.log(`已完成${initRet.length}个！`);
-        console.log('可以愉快的发表评论了！');
-      }, 40000);
+
+      notInitIssueLinks.map(async (item) => start(item));
     } else {
       console.log('本次发布无新增页面，无需初始化issue!!');
     }
@@ -150,4 +130,28 @@ function sendRequest(options) {
       }
     });
   });
+}
+
+/**
+ * 部署好网站后，直接执行 start，新增文章并不会生成评论
+ * 经测试，最少需要等待 40 秒，才可以正确生成，怀疑跟 github 的 api 有关系，没有找到实锤
+ */
+function start(_notInitIssueLink) {
+  setTimeout(async () => {
+    const html = await send.get({ url: _notInitIssueLink });
+    const title = cheerio.load(html)('title').text() || '';
+    if (!title || title === config.title) return start(_notInitIssueLink); // 如果没有拿到 title, 认为没有生成页面，继续等待
+    // const desc = cheerio.load(html)("meta[name='description']").attr('content');
+    const pathLabel = url.parse(_notInitIssueLink).path;
+    // const label = crypto.createHash('md5').update(pathLabel, 'utf-8').digest('hex');
+    const form = JSON.stringify({
+      title: `「评论」${title.split('|')[0]}`,
+      body: `页面: ${_notInitIssueLink}`,
+      labels: ['Gitalk', 'Comment', pathLabel]
+    });
+    const res = await send.post({ form });
+    console.log(`已完成${_notInitIssueLink}的初始化！`);
+    console.log('可以愉快的发表评论了！');
+    return res;
+  }, 40000);
 }

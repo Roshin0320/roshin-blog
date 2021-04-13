@@ -27,8 +27,10 @@
     return result;
   };
 
-  const arr = [1, 2, 3];
-  const newArr = arr.myMap(() => 1);
-  console.log(newArr); // [ 1, 1, 1 ]
+  const numbers = [1, 4, 9];
+  const roots = numbers.myMap(Math.sqrt);
+
+  console.log(numbers); // [1, 4, 9]
+  console.log(roots); // [1, 2, 3]
   // #endregion answer
 }
