@@ -6,24 +6,36 @@
  */
 module.exports = [
   { text: '首页', link: '/' },
-  // { text: '分类', link: '/categories/' },
-  // { text: '标签', link: '/tags/' },
-  // { text: '关于', link: '/about/' },
-  // { text: '归档', link: '/archives/' },
   {
     text: '学习笔记',
     link: '/notes/',
     items: [{ text: '《数据结构与算法》笔记', link: '/note/structure/' }]
   },
   {
-    text: '文档教程',
-    link: '/docs/',
-    items: [{ text: '技术文档', link: '/pages/fc6c359ec7a8c/' }]
+    text: 'JavaScript',
+    link: '/js/',
+    items: [
+      { text: '手写代码', link: '/pages/87640caeb46e9/' }
+      // { text: '实用函数', link: '/pages/fc6c359ec7a8c/' }
+    ]
   },
+  // {
+  //   text: '文档教程',
+  //   link: '/docs/',
+  //   items: [{ text: '技术文档', link: '/pages/fc6c359ec7a8c/' }]
+  // },
+  // {
+  //   text: '面试集锦',
+  //   link: '/audition/',
+  //   items: [{ text: 'JavaScript', link: '/pages/22250d7a02f68/' }]
+  // },
   {
-    text: '面试集锦',
-    link: '/audition/',
-    items: [{ text: 'JavaScript', link: '/pages/22250d7a02f68/' }]
+    text: '更多',
+    link: '/more/',
+    items: [
+      { text: '文档教程', link: '/pages/fc6c359ec7a8c/' },
+      { text: '面试集锦', link: '/pages/22250d7a02f68/' }
+    ]
   },
   {
     text: '索引',
