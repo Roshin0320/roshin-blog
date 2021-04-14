@@ -6,7 +6,7 @@
 require('dotenv').config();
 
 const url = require('url');
-const request = require('request');
+const axios = require('axios');
 const config = require('../config'); // 项目基本配置
 const fse = require('fs-extra'); // fs 扩展工具包
 // const yaml = require('js-yaml'); // YAML 解析器
@@ -14,34 +14,37 @@ const xmlParser = require('xml-parser'); // XML解析器
 const cheerio = require('cheerio'); // 服务器端操控 HTML 的工具库，jQuery语法
 // const crypto = require('crypto'); // 通用的加密和哈希算法
 
+// 创建请求器
+const instance = axios.create({
+  headers: {
+    'User-Agent': 'github-user'
+  }
+});
+
+// 添加响应拦截器
+instance.interceptors.response.use((response) => {
+  return response.data || response;
+});
+
 // issues 路径
 const issuesUrl = `https://api.github.com/repos/${config.username}/${config.repo}/issues?access_token=${process.env.GITALK_INIT_TOKEN}`;
 
-// 忽略的页面
-// const ignore = ['/', '/tags/', '/archives/', '/categories/', '/audition/', '/docs/', '/notes/'];
 // 包含的页面，null 表示所有页面
 const includes = ['/about/', '/blog/', '/friends/', /\/pages\/[a-zA-Z\d]+\//];
 
 // 发送请求
 const send = {
   // get 请求
-  async get(options) {
-    const res = await sendRequest({
-      url: `${issuesUrl}&page=1&per_page=1000`,
-      json: true,
-      headers: { 'User-Agent': 'github-user' },
+  async get(options = {}) {
+    const res = await instance.get(options.url || issuesUrl, {
       ...options
     });
     return res;
   },
   // post 请求
-  async post(options) {
-    const res = await sendRequest({
-      url: issuesUrl,
-      json: true,
-      headers: { 'User-Agent': 'github-user' },
-      method: 'POST',
-      form: '',
+  async post(options = {}) {
+    console.log(options.url || issuesUrl);
+    const res = await instance.post(options.url || issuesUrl, {
       ...options
     });
     return res;
@@ -79,10 +82,6 @@ async function main() {
           notInitIssueLinks.splice(i, 1);
           i--;
         }
-        // if (ignore.includes(normalizeUrl)) {
-        //   notInitIssueLinks.splice(i, 1);
-        //   i--;
-        // }
       }
     }
 
@@ -116,42 +115,30 @@ function sitemapXmlReader() {
 }
 
 /**
- * 发送请求
- * @param {object} options 请求配置
- * @return {Promise} 返回请求结果
- */
-function sendRequest(options) {
-  return new Promise(function (resolve, reject) {
-    request(options, function (error, response, body) {
-      if (!error) {
-        resolve(body);
-      } else {
-        reject(error);
-      }
-    });
-  });
-}
-
-/**
  * 部署好网站后，直接执行 start，新增文章并不会生成评论
  * 经测试，最少需要等待 40 秒，才可以正确生成，怀疑跟 github 的 api 有关系，没有找到实锤
  */
-function start(_notInitIssueLink) {
+async function start(_notInitIssueLink) {
   setTimeout(async () => {
-    console.log('重新检索');
+    const pathLabel = url.parse(_notInitIssueLink).path;
+
+    // 检测如果已经存在相关评论，跳过
+    const issues = await send.get({ params: { labels: pathLabel } });
+    if (issues.length) return;
+
     const html = await send.get({ url: _notInitIssueLink });
     const title = cheerio.load(html)('title').text() || '';
-    if (!title || title === config.title) return start(_notInitIssueLink); // 如果没有拿到 title, 认为没有生成页面，继续等待
-    // const desc = cheerio.load(html)("meta[name='description']").attr('content');
-    const pathLabel = url.parse(_notInitIssueLink).path;
-    // const label = crypto.createHash('md5').update(pathLabel, 'utf-8').digest('hex');
-    const form = JSON.stringify({
+    if (!title || title === config.title) {
+      console.log('页面暂未生成，40s 后重新检索');
+      return start(_notInitIssueLink); // 如果没有拿到 title, 认为没有生成页面，继续等待
+    }
+    const data = {
       title: `「评论」${title.split('|')[0]}`,
       body: `页面: ${_notInitIssueLink}`,
       labels: ['Gitalk', 'Comment', pathLabel]
-    });
-    const res = await send.post({ form });
-    console.log(`已完成${_notInitIssueLink}的初始化！`);
+    };
+    const res = await send.post({ ...data });
+    console.log(`已完成 ${_notInitIssueLink} 的初始化！`);
     console.log('可以愉快的发表评论了！');
     return res;
   }, 40000);
