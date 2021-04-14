@@ -12,12 +12,12 @@ on:
     paths:   # 至少有一个路径与 paths 过滤器中的模式匹配
       - "docs/**"
       - "scripts/**"
-  pull_request:
-    branches:
-      - master
-    paths:
-      - "docs/**"
-      - "scripts/**"
+  # pull_request:
+  #   branches:
+  #     - master
+  #   paths:
+  #     - "docs/**"
+  #     - "scripts/**"
 
   # 允许您从 "Actions" 选项卡手动运行此工作流
   workflow_dispatch:
