@@ -105,5 +105,7 @@
     "vuepress-theme-vdoing": "^1.8.1",
     "xml-parser": "^1.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
 }
