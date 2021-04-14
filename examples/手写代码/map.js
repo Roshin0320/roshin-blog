@@ -16,12 +16,12 @@
       throw '第一个参数必须是一个函数';
     }
 
+    const array = this; // 拿到当前数组
     const result = []; // 定义一个空数组用作保存数据使用
-    const currentArr = this; // currentArr 指向 this, this 也就是调用该 map 方法的数组本身
 
     // 遍历, 调用传入的函数, 并将返回值保存在 result 中，注意这里将 this 指向改为 thisArg
-    for (let i = 0; i < currentArr.length; i++) {
-      result.push(callback.call(thisArg, currentArr[i], i, currentArr));
+    for (let i = 0; i < array.length; i++) {
+      result.push(callback.call(thisArg, array[i], i, array));
     }
 
     return result;
