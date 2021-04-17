@@ -1,5 +1,3 @@
-/* eslint-disable no-inner-declarations */
-
 // #region examples
 function Car(make, model, year) {
   this.make = make;

@@ -15,8 +15,8 @@ module.exports = [
     text: 'JavaScript',
     link: '/js/',
     items: [
-      { text: '手写代码', link: '/pages/87640caeb46e9/' }
-      // { text: '实用函数', link: '/pages/fc6c359ec7a8c/' }
+      { text: '手写代码', link: '/pages/87640caeb46e9/' },
+      { text: '实用方法', link: '/pages/0ed58b3f0ce5b/' }
     ]
   },
   // {
