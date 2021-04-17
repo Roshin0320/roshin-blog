@@ -126,7 +126,10 @@ async function start(_notInitIssueLink) {
     const issues = await send.get({ params: { labels: pathLabel } });
     if (issues.length) return;
 
-    const html = await send.get({ url: _notInitIssueLink });
+    let html = '';
+    try {
+      html = await send.get({ url: _notInitIssueLink });
+    } catch (error) {}
     const title = cheerio.load(html)('title').text() || '';
     if (!title || title === config.title) {
       console.log('页面暂未生成，40s 后重新检索');
