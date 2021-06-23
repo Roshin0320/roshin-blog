@@ -68,19 +68,87 @@ module.exports = [
     }
   ],
   // demo演示模块 https://daxigua.me/vuepress-plugin-demo-block/zh/
+  // [
+  //   require('../plugins/demo-block'),
+  //   {
+  //     settings: {
+  //       // jsLib: ['http://xxx'], // 在线示例(jsfiddle, codepen)中的js依赖
+  //       // cssLib: ['http://xxx'], // 在线示例中的css依赖
+  //       // vue: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js', // 在线示例中的vue依赖
+  //       jsfiddle: true, // 是否显示 jsfiddle 链接
+  //       codepen: true, // 是否显示 codepen 链接
+  //       horizontal: false // 是否展示为横向样式
+  //     }
+  //   }
+  // ],
+  // demo演示模块 https://daxigua.me/vuepress-plugin-demo-block/zh/
+  // [
+  //   'demo-block',
+  //   {
+  //     settings: {
+  //       // jsLib: ['http://xxx'], // 在线示例(jsfiddle, codepen)中的js依赖
+  //       // cssLib: ['http://xxx'], // 在线示例中的css依赖
+  //       vue: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js', // 在线示例中的vue依赖
+  //       jsfiddle: true, // 是否显示 jsfiddle 链接
+  //       codepen: true, // 是否显示 codepen 链接
+  //       horizontal: false // 是否展示为横向样式
+  //     }
+  //   }
+  // ],
+  // demo演示模块  https://docs.chenjianhui.site/vuepress-plugin-demo-container/zh/
   [
-    'demo-block',
+    require('../plugins/demo-container'),
     {
-      settings: {
-        // jsLib: ['http://xxx'], // 在线示例(jsfiddle, codepen)中的js依赖
-        // cssLib: ['http://xxx'], // 在线示例中的css依赖
-        // vue: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js', // 在线示例中的vue依赖
-        jsfiddle: false, // 是否显示 jsfiddle 链接
-        codepen: true, // 是否显示 codepen 链接
-        horizontal: false // 是否展示为横向样式
-      }
+      // component: 'demo-block',
+      locales: [
+        {
+          lang: 'zh-CN',
+          'demo-block': {
+            'hide-text': '隐藏代码',
+            'show-text': '显示代码',
+            'copy-text': '复制代码',
+            'copy-success': '复制成功'
+          }
+        },
+        {
+          lang: 'en-US',
+          'demo-block': {
+            'hide-text': 'Hide',
+            'show-text': 'Expand',
+            'copy-text': 'Copy',
+            'copy-success': 'Successful'
+          }
+        }
+      ]
     }
   ],
+  // // demo演示模块  https://docs.chenjianhui.site/vuepress-plugin-demo-container/zh/
+  // [
+  //   'demo-container',
+  //   {
+  //     // component: 'demo-block',
+  //     locales: [
+  //       {
+  //         lang: 'zh-CN',
+  //         'demo-block': {
+  //           'hide-text': '隐藏代码',
+  //           'show-text': '显示代码',
+  //           'copy-text': '复制代码',
+  //           'copy-success': '复制成功'
+  //         }
+  //       },
+  //       {
+  //         lang: 'en-US',
+  //         'demo-block': {
+  //           'hide-text': 'Hide',
+  //           'show-text': 'Expand',
+  //           'copy-text': 'Copy',
+  //           'copy-success': 'Successful'
+  //         }
+  //       }
+  //     ]
+  //   }
+  // ],
   // 放大图片
   [
     'vuepress-plugin-zooming',

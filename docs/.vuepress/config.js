@@ -1,10 +1,10 @@
-// const path = require('path');
+const path = require('path');
 const plugins = require('./config/plugins');
 const themeConfig = require('./config/themeConfig');
 const config = require('../../config'); // 项目基本配置
 
 const keywords = ['Roshin', '个人博客', '技术文档', '学习笔记', '收藏', 'JavaScript', 'js', 'TypeScript', 'ts'];
-// const resolve = (dir = '') => path.resolve(__dirname, dir); // 解析绝对路径
+const resolve = (dir = '') => path.resolve(__dirname, dir); // 解析绝对路径
 
 module.exports = {
   title: config.title, // 网站的标题
@@ -20,7 +20,8 @@ module.exports = {
     ['link', { rel: 'icon', href: '/favicon.ico' }], // favicons，资源放在 public 文件夹
     ['meta', { name: 'keywords', content: keywords.join(',') }], // 属性关键字
     ['meta', { name: 'baidu-site-verification', content: 'code-ZIXMiJyY4n' }], // 百度统计的站长验证
-    ['meta', { name: 'theme-color', content: '#11a8cd' }] // 移动浏览器主题颜色
+    ['meta', { name: 'theme-color', content: '#11a8cd' }], // 移动浏览器主题颜色
+    ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }]
   ],
   // markdown 扩展
   markdown: {
@@ -32,11 +33,13 @@ module.exports = {
     }
   },
   themeConfig, // 主题配置
-  plugins // 插件
+  plugins, // 插件
   // 通过链式操作改变 webpack 配置
-  // chainWebpack: (config) => {
-  //   // 设置别名
-  //   console.log(resolve('../../src/'), 123123);
-  //   config.resolve.alias.set('@src', resolve('../../src/')).set('@vuepress', resolve('./'));
-  // }
+  chainWebpack: (config) => {
+    // 设置别名
+    // console.log(resolve('../../src/'), 123123);
+    config.resolve.alias.set('@src', resolve('../../src/')).set('@vuepress', resolve('./'));
+  },
+  // 指定额外的需要被监听的文件。
+  extraWatchFiles: ['.vuepress/plugins']
 };

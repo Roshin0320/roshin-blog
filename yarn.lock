@@ -12899,6 +12899,11 @@ vuepress-plugin-demo-block@^0.7.2:
   resolved "https://registry.npmjs.org/vuepress-plugin-demo-block/-/vuepress-plugin-demo-block-0.7.2.tgz#02fc4f0ef764052981accf41f1403fdb9f794c0d"
   integrity sha512-0k7z7bTjXoXgdAMVFIVn3RFSQpKOM0yvD0hf/CA0gMCLBih77mCALtEpH9b+bEvijHmLLIq+BUtS2TQHXpkbNA==
 
+vuepress-plugin-demo-container@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/vuepress-plugin-demo-container/-/vuepress-plugin-demo-container-0.2.0.tgz#5d92161b1c033b91f3cabddd994d5beed47ab6a6"
+  integrity sha512-IXWZUc9+mErxjhBMRvhjHkGlXC3aXLS8wRV4kh4RZYAOVtb8nLv2fmpzwrSZrnIOXLGMcMTObdFruVzX9kBylw==
+
 vuepress-plugin-one-click-copy@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/vuepress-plugin-one-click-copy/-/vuepress-plugin-one-click-copy-1.0.2.tgz#9731f9d2e7b6d5160e84942b0f1b8c7500589487"

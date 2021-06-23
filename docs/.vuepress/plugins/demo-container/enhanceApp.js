@@ -1,3 +1,9 @@
+// import Vue from 'vue';
+// import Child from '@src/Vue组件通信/props/child';
+// // import Child from '../../../../src/Vue组件通信/props/child';
+
+// Vue.component('child', Child);
+
 /**
  * 客户端应用增强文件
  * 使用异步函数也是可以的，主要做一些其他的应用级别的优化
@@ -7,15 +13,4 @@
  * @param siteData 站点元数据
  * @param isServer 当前应用配置是处于 服务端渲染 或 客户端
  */
-export default ({ Vue }) => {
-  Vue.mixin({
-    computed: {
-      $lang() {
-        return 'zh-CN';
-      }
-      // $title() {
-      //   return `${this.$siteTitle}-${this.$page.title}`;
-      // }
-    }
-  });
-};
+export default () => {};
