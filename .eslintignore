@@ -8,3 +8,5 @@
 !.eslintrc.js
 !.stylelintrc.js
 !.cz-config.js
+!.commitlintrc.js
+!.prettierrc.js
